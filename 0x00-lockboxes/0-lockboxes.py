@@ -19,7 +19,7 @@ Return: True if all boxes can be opened, otherwise False
     key_list = boxes[0]
     key_chain = [0]
     while len(key_chain) < len(boxes):
-        for key in key_list:
+        for key in key_list[:]:
             if key >= len(boxes):
                 key_list.remove(key)
                 continue
