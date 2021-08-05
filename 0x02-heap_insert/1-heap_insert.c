@@ -11,27 +11,38 @@ heap_t *heapMaxifier(heap_t *newNode);
 
 heap_t *heap_insert(heap_t **root, int value)
 {
-	heap_t *currentNode;
+	heap_t *currentNode = *root, *pNode;
 
 	if (*root == NULL)
-		return (binary_tree_node(*root, value));
-
-	currentNode = *root;
-
-	while (!currentNode)
 	{
-		if (currentNode->n == value)
-			return (heapMaxifier(currentNode));
-
-		if (currentNode->n < value)
-		{
-			currentNode = currentNode->left;
-			continue;
-		}
-		currentNode = currentNode->right;
+		currentNode = binary_tree_node(*root, value);
+		*root = currentNode;
+		return (*root);
 	}
 
-	return (binary_tree_node(currentNode, value));
+	while (currentNode != NULL)
+	{
+		pNode = currentNode;
+
+		if (currentNode->n == value)
+			return (heapMaxifier(currentNode));
+			
+		if (currentNode->n < value)
+			currentNode = currentNode->left;
+		else
+			currentNode = currentNode->right;
+	}
+
+	if (value > pNode->n)
+	{
+		pNode->left = binary_tree_node(pNode, value);
+		return (pNode->left);
+	}
+	else
+	{
+		pNode->right = binary_tree_node(pNode, value);
+		return (pNode->right);
+	}
 }
 
 
