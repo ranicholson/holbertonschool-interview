@@ -9,7 +9,7 @@
 
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
-	int x, y, tempGrid[3][3], pileCheck = 1;
+	int x, y, tempGrid[3][3], pileCheck;
 
 	for (x = 0; x < 3; x++)
 	{
@@ -19,6 +19,7 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 			tempGrid[x][y] = grid1[x][y];
 		}
 	}
+	pileCheck = collapseChecker(grid1);
 	while (pileCheck == 1)
 	{
 		pilePrinter(grid1);
@@ -28,16 +29,12 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 			{
 				if (grid1[x][y] > 3)
 					tempGrid[x][y] -= 4;
-
 				if (x != 0 && grid1[x - 1][y] > 3)
 					tempGrid[x][y]++;
-
 				if (x != 2 && grid1[x + 1][y] > 3)
 					tempGrid[x][y]++;
-
 				if (y != 0 && grid1[x][y - 1] > 3)
 					tempGrid[x][y]++;
-
 				if (y != 2 && grid1[x][y + 1] > 3)
 					tempGrid[x][y]++;
 			}
