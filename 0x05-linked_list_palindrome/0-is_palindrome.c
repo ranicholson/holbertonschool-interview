@@ -4,7 +4,7 @@
 /**
  * is_palindrome - checks if a linked list is a palindrome
  * @head: Head of list to check.
- * Return: 1 if it is a palindrome, otherwise 0.
+ * Return:1 if it is a palindrome, otherwise 0.
  */
 
 int is_palindrome(listint_t **head)
