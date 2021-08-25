@@ -11,7 +11,7 @@ int is_palindrome(listint_t **head)
 {
 	listint_t *listCycler = *head;
 	int listCount = 0;
-	int listArray[1000];
+	int listArray[2000];
 
 	if (listCycler == NULL)
 		return (1);
