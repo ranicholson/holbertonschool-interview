@@ -25,7 +25,8 @@ try:
     for line in stdin:
         lineCount += 1
         currentLine = line.split()
-        fileSize += int(currentLine[-1])
+        if currentLine[-1].isnumeric():
+            fileSize += int(currentLine[-1])
         codeBook[currentLine[-2]] += 1
         if lineCount % 10 == 0:
             statPrinter(fileSize, codeBook)
