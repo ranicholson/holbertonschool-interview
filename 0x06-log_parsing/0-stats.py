@@ -10,7 +10,7 @@ def statPrinter(fileSize, codeBook):
 
     print("File size: {}".format(fileSize))
 
-    for code in codeBook.keys():
+    for code in sorted(codeBook.keys()):
         if codeBook[code] != 0:
             print("{}: {}".format(code, codeBook[code]))
 
