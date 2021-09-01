@@ -39,4 +39,3 @@ try:
 
 except (KeyboardInterrupt):
     statPrinter(fileSize, codeBook)
-    raise
