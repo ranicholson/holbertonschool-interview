@@ -12,7 +12,7 @@ def statPrinter(fileSize, codeBook):
 
     for code in codeBook.keys():
         if codeBook[code] != 0:
-            print ("{}: {}".format(code, codeBook[code]))
+            print("{}: {}".format(code, codeBook[code]))
 
 
 lineCount = fileSize = currentCode = 0
@@ -34,3 +34,4 @@ try:
 
 except (KeyboardInterrupt):
     statPrinter(fileSize, codeBook)
+    raise
