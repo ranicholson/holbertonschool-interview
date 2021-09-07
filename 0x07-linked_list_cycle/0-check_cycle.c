@@ -12,6 +12,9 @@ int check_cycle(listint_t *list)
 	listint_t *steadyChecker = list;
 	listint_t *speedyChecker = list->next;
 
+	if (list == NULL || list->next == NULL)
+		return (0);
+
 	while (speedyChecker->next != NULL)
 	{
 		speedyChecker = speedyChecker->next;
