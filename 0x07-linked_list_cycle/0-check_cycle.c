@@ -9,11 +9,14 @@
 
 int check_cycle(listint_t *list)
 {
-	listint_t *steadyChecker = list;
-	listint_t *speedyChecker = list->next;
+	listint_t *steadyChecker;
+	listint_t *speedyChecker;
 
 	if (list == NULL || list->next == NULL)
 		return (0);
+
+	steadyChecker = list;
+	speedyChecker = list->next;
 
 	while (speedyChecker->next != NULL)
 	{
