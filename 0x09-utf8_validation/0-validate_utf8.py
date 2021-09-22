@@ -13,12 +13,15 @@ def validUTF8(data):
                 count = 2
             elif (item >> 3) == 0b11110:
                 count = 3
-            elif (item >> 7):
+            elif (item >> 7 == 0):
                 count = 0
+            else:
+                return False
         else:
             if (item >> 6) != 0b10:
                 return False
             count -= 1
+
     if count > 0:
         return False
 
