@@ -14,12 +14,12 @@ def validUTF8(data):
             elif (item >> 3) == 0b11110:
                 count = 3
             elif (item >> 7):
-                return False
+                count = 0
         else:
             if (item >> 6) != 0b10:
                 return False
             count -= 1
-        if count > 0:
-            return False
+    if count > 0:
+        return False
 
-        return True
+    return True
