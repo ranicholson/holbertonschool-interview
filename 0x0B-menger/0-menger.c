@@ -9,7 +9,7 @@ void menger(int level)
 {
 	char spongeChar = '#';
 	int levelSize = pow(3, level);
-	int heightLoop, widthLoop = 0;
+	int heightLoop = 0, widthLoop = 0;
 	int spaceChecker = 1;
 
 	if (level < 0)
