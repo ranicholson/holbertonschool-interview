@@ -17,10 +17,10 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 		return (NULL);
 	while (slowLane)
 	{
-		printf("Value checked at index [%lu] = [%d]\n",
-		 expressLane->index, expressLane->n);
 		if (expressLane->n < value && expressFlag == 0)
 		{
+			printf("Value checked at index [%lu] = [%d]\n",
+			 expressLane->index, expressLane->n);
 			if (expressLane->express == NULL)
 			{
 				slowLane = expressLane;
