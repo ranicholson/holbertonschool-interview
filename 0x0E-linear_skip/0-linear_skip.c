@@ -8,12 +8,13 @@
  */
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-	skiplist_t *sL = list;
-	skiplist_t *eL = list->express;
+	skiplist_t *sL, *eL;
 	int foundFlag = 0, expressFlag = 0;
 
-	if (!list)
+	if (list == NULL)
 		return (NULL);
+	sL = list;
+	eL = list->express;
 	while (sL)
 	{
 		if (eL->n < value && expressFlag == 0)
