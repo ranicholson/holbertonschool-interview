@@ -6,47 +6,44 @@
  * @value: value to search for
  * Return: Pointer to node where value is located or NULL if something is off
  */
-
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-	skiplist_t *slowLane = list;
-	skiplist_t *expressLane = list->express;
+	skiplist_t *sL = list;
+	skiplist_t *eL = list->express;
 	int foundFlag = 0, expressFlag = 0;
 
 	if (!list)
 		return (NULL);
-	while (slowLane)
+	while (sL)
 	{
-		if (expressLane->n < value && expressFlag == 0)
+		if (eL->n < value && expressFlag == 0)
 		{
-			printf("Value checked at index [%lu] = [%d]\n",
-			 expressLane->index, expressLane->n);
-			if (expressLane->express == NULL)
+			printf("Value checked at index [%lu] = [%d]\n", eL->index, eL->n);
+			if (eL->express == NULL)
 			{
-				slowLane = expressLane;
-				while (expressLane->next != NULL)
-					expressLane = expressLane->next;
+				sL = eL;
+				while (eL->next != NULL)
+					eL = eL->next;
 				expressFlag = 1;
 			}
 			else
 			{
-				slowLane = expressLane;
-				expressLane = expressLane->express;
+				sL = eL;
+				eL = eL->express;
 				continue;
 			}
 		}
 		if (foundFlag == 0)
 		{
+			printf("Value checked at index [%lu] = [%d]\n", eL->index, eL->n);
 			printf("Value found between indexes [%lu] and [%lu]\n",
-			 slowLane->index, expressLane->index);
+			 sL->index, eL->index);
 			foundFlag = 1;
 		}
-		printf("Value checked at index [%lu] = [%d]\n",
-		 slowLane->index, slowLane->n);
-
-		if (value == slowLane->n)
-			return (slowLane);
-		slowLane = slowLane->next;
+		printf("Value checked at index [%lu] = [%d]\n", sL->index, sL->n);
+		if (value == sL->n)
+			return (sL);
+		sL = sL->next;
 	}
 	return (NULL);
 }
