@@ -17,6 +17,8 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 		return (NULL);
 	while (slowLane)
 	{
+		printf("Value checked at index [%lu] = [%d]\n",
+		 expressLane->index, expressLane->n);
 		if (expressLane->n < value && expressFlag == 0)
 		{
 			if (expressLane->express == NULL)
@@ -28,8 +30,6 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 			}
 			else
 			{
-				printf("Value checked at index [%lu] = [%d]\n",
-				 expressLane->index, expressLane->n);
 				slowLane = expressLane;
 				expressLane = expressLane->express;
 				continue;
