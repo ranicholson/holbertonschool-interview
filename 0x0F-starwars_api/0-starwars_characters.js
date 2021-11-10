@@ -8,18 +8,22 @@ request(url, function (error, response, body) {
   if (error) {
     console.log(error);
   } else {
-    const bodyShot = JSON.parse(body);
+    const bodyShot = JSON.parse(body).characters;
     const characterList = {};
 
-    for (const character of bodyShot.characters) {
-      request(character, function (err, resp, bod) {
-        if (err) {
-          console.log(err);
-        } else {
-          characterList[character] = JSON.parse(bod).name;
+    bodyShot.forEach(character => {
+    request(character, function (error, response, body) {
+      if (error) {
+        console.log(error);
+      }
+      const name = JSON.parse(body).name;
+      characterList[character] = name;
+      if (Object.values(characterList).length === bodyShot.length) {
+        bodyShot.forEach(character => {
           console.log(characterList[character]);
-        }
-      });
-    }
+        });
+      }
+    });
+  });
   }
 });
