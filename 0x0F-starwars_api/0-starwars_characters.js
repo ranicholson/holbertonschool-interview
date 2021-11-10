@@ -2,7 +2,7 @@
 
 const request = require('request');
 const movieNumber = parseInt(process.argv[2]);
-const url = 'https://swapi-api.hbtn.io/api/films/' + movieNumber;
+const url = 'https://swapi-api.hbtn.io/api/films/' + movieNumber +'/';
 
 request(url, function (error, response, body) {
   if (error) {
