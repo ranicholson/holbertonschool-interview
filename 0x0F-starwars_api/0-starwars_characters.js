@@ -9,13 +9,15 @@ request(url, function (error, response, body) {
     console.log(error);
   } else {
     const bodyShot = JSON.parse(body);
+    const characterList = {};
 
     for (const character of bodyShot.characters) {
       request(character, function (err, resp, bod) {
         if (err) {
           console.log(err);
         } else {
-          console.log(JSON.parse(bod).name);
+          characterList[character] = JSON.parse(bod).name;
+          console.log(characterList[character]);
         }
       });
     }
