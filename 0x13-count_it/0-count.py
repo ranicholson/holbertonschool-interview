@@ -30,7 +30,7 @@ def count_words(subreddit, word_list, after=None, wordDictionary={}):
                 wordDictionary[word] += title.count(word.lower())
         after = (r.json().get("data").get("after"))
         if after is None:
-            LngFrPEP8 = sorted(wordDictionary.items(), key=lambda x: x[::-1])
+            LngFrPEP8 = sorted(wordDictionary.items(), key=lambda x: x[::])
             sortWrdList = sorted(LngFrPEP8, key=lambda y: y[1], reverse=True)
             for word, count in sortWrdList:
                 if count != 0:
