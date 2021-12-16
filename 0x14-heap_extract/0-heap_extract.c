@@ -15,7 +15,7 @@ int heap_extract(heap_t **root)
 		return (0);
 
 	extractedRoot = (*root)->n;
-	heapHeight = binary_tree_height(*root);
+	heapHeight = binary_tree_height(*root) + 1;
 	lastNode = getLastNode(*root, heapHeight);
 
 	if (heapHeight == 1)
@@ -26,6 +26,12 @@ int heap_extract(heap_t **root)
 	}
 
 	(*root)->n = lastNode->n;
+
+	if (lastNode->parent->right == lastNode)
+		lastNode->parent->right = NULL;
+	else
+		lastNode->parent->left = NULL;
+
 	free(lastNode);
 	heapSorter(*root);
 	return (extractedRoot);
@@ -88,15 +94,15 @@ void heapSorter(heap_t *root)
 	int numberHolder;
 	heap_t *biggerNode = root;
 
-	if (root->left != NULL && root->right != NULL)
-	{
-		if (root->left->n >= biggerNode->n)
-			biggerNode = root->left;
+	if (root->left != NULL && root->left->n >= biggerNode->n)
+		biggerNode = root->left;
 
-		if (biggerNode == root->left && root->right->n >= biggerNode->n)
+	if (root->right != NULL)
+	{
+		if (biggerNode == root->left && root->right->n > biggerNode->n)
 			biggerNode = root->right;
 
-		if (root->right->n >= biggerNode->n)
+		else if (root->right->n >= biggerNode->n)
 			biggerNode = root->right;
 	}
 
@@ -107,7 +113,4 @@ void heapSorter(heap_t *root)
 		biggerNode->n = numberHolder;
 		heapSorter(biggerNode);
 	}
-
-
-
 }
