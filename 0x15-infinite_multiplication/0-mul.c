@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 	arg1Number = product[0] == 0 ? 1 : 0;
 	for (; arg1Number < lenArg1 + lenArg2; arg1Number++)
 	{
-		if (product[arg1Number] == 0)
+		if (product[arg1Number] == 0 && arg1Number + 1 != lenArg1 + lenArg2)
 			continue;
 		_putchar(product[arg1Number] + '0');
 	}
@@ -88,7 +88,7 @@ void qualityAssurance(int argc, char **argv)
  * poorMansCalloc - Not allowed to use calloc, only malloc
  * @length: Length of array memory needs allocated for
  * @charSize: size of memory each character needs
- * @return void*
+ * Return: void*
  */
 
 void *poorMansCalloc(size_t length, size_t charSize)
